@@ -72,12 +72,12 @@ pub fn App() -> Html {
     html! {
 
         <>
+                // this prevents the touch from panning the whole body
+                <script>{"const svg = document.getElementById(\"my-svg\");svg.addEventListener(\"touchmove\", e => e.preventDefault());"}</script>
                 <svg {onpointerdown} {onpointermove} {onpointerup} id="my-svg" xmlns="http://www.w3.org/2000/svg" width="300px" height="300px" viewBox={view_box.to_svg_prop()} style="background-color:white; border: 5px solid black;" >
         <circle cx="50" cy="50" r="20" fill="gray"/>
                 </svg>
 
-                    // this prevents the touch from panning the whole body
-                <script>{"const svg = document.getElementById(\"my-svg\");svg.addEventListener(\"touchmove\", e => e.preventDefault());"}</script>
         </>
 
     }
